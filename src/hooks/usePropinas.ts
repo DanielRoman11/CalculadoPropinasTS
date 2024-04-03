@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useMemo, useState } from "react";
 import { menuItems } from "../data/db";
 import { Food, FoodItem } from "../interfaces";
 
@@ -7,6 +7,7 @@ export default function usePropinas() {
 
   const [ data ] = useState(menuItems);
   const [ consumo, setConsumo ] = useState(initializeConsumo);
+  const [ propina, setPropina ] = useState(1.1)
 
   const MAX_TIMES = 15
 
@@ -27,9 +28,45 @@ export default function usePropinas() {
     }
   }
 
+  function substractConsumo(id: number) {
+    const consumoCopy: FoodItem[] = [...consumo]
+    const thisTimes = consumoCopy.find((item) => Number(item.id) === id)
+
+    if(thisTimes !== undefined && thisTimes.quantity > 1){
+      thisTimes.quantity -= 1
+      setConsumo([...consumoCopy])
+    }
+  }
+
+  const removeItem = (id: number) => {
+    const thisItem: FoodItem | undefined = consumo.find((item) => Number(item.id) === id)
+    setConsumo(consumo.filter((item) => item !== thisItem))
+  };
+
+  const handlePropinaChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPropina(parseFloat(e.target.value))
+  }
+
+  const subtotal = useMemo(() => consumo.reduce((total, food): number => {
+    return total + (food.price * food.quantity)
+  }, 0), [consumo]);
+
+  const total = useMemo(() => {
+    return Number((subtotal * propina).toFixed(2))
+  }, [propina, subtotal])
+
+  const flushConsumo = () => { setConsumo([]); setPropina(1.1)}
+
   return {
     data,
     consumo,
-    addConsumo
+    propina,
+    addConsumo,
+    substractConsumo,
+    removeItem,
+    subtotal,
+    total,
+    handlePropinaChange,
+    flushConsumo
   }
 }
