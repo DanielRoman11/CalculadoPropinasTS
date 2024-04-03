@@ -3,17 +3,36 @@ import { menuItems } from "../data/db";
 import { Food, FoodItem } from "../interfaces";
 
 export default function usePropinas() {
-  const initializeConsumo: FoodItem[] = []
-
   const [ data ] = useState(menuItems);
-  const [ consumo, setConsumo ] = useState(initializeConsumo);
+  const [ consumo, setConsumo ] = useState<FoodItem[]>([]);
   const [ propina, setPropina ] = useState(1.1)
 
   const MAX_TIMES = 15
 
+  function createToast(food: Food) {
+    const consumoElem: HTMLElement | null = document.querySelector('#consumoElem');
+    const toastElem = document.createElement('div');
+    const toastText = document.createElement('p');
+
+    toastText.textContent = `Se añadió ${food.name} al consumo.`
+    toastText.classList.add('text-sm', 'font-normal', 'p-4')
+    toastElem.classList.add('text-center', 'bg-white', 'shadow', 'items-center', 'text-gray-500', 'rounded-lg' )
+    
+    
+    toastElem.appendChild(toastText)
+    consumoElem?.appendChild(toastElem)
+
+    setTimeout(() => {
+      const primero = consumoElem?.firstElementChild
+      if(primero) consumoElem?.removeChild(primero)
+    }, 5000);
+  }
+
   function addConsumo(food: Food) {
     const id = food.id;
   
+    createToast(food)
+
     if(consumo.find((item: Food) => item.id === id) === undefined) {
       const newFoodItem: FoodItem = {...food, quantity: 1}
       setConsumo([...consumo, newFoodItem]);
