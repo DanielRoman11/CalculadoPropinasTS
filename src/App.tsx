@@ -136,12 +136,55 @@ function App() {
                     onClick={flushConsumo}>Guardar Orden</button>
             </article>
             : <>
-                <article className='w-1/2 border-2 rounded-md border-gray-200 px-4 py-2 flex flex-col space-y-5 text-xl font-bold text-center'>
-                    <p>No se ha seleccionado ningún plato aún 🍕😴</p>
-                    <img
-                        className='h-[40rem] transition-all grayscale' 
-                        src="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                        alt="Imagen consumo vacio" />
+                <article className='w-1/2 border-2 rounded-md border-gray-200 px-4 flex flex-col space-y-5 text-gray-800'>
+                    <h2 className='font-bold text-2xl my-2'>Consumo</h2>
+                    <p className='text-center font-semibold text-sm'>No se ha seleccionado ningún plato aún 🍕😴</p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div className="grid gap-4">
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt=""/>
+                            </div>
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt=""/>
+                            </div>
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt=""/>
+                            </div>
+                        </div>
+                        <div className="grid gap-4">
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt=""/>
+                            </div>
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt=""/>
+                            </div>
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt=""/>
+                            </div>
+                        </div>
+                        <div className="grid gap-4">
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt=""/>
+                            </div>
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt=""/>
+                            </div>
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt=""/>
+                            </div>
+                        </div>
+                        <div className="grid gap-4">
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt=""/>
+                            </div>
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt=""/>
+                            </div>
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt=""/>
+                            </div>
+                        </div>
+                    </div>
                 </article>
             </>
         }
