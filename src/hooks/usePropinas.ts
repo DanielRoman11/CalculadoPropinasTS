@@ -1,13 +1,24 @@
-import { ChangeEvent, useMemo, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { menuItems } from "../data/db";
 import { Food, FoodItem } from "../interfaces";
 
 export default function usePropinas() {
+
+  const initializeConsumo = () =>{
+    const thisConsumo = localStorage.getItem('consumo')
+    return thisConsumo ? JSON.parse(thisConsumo) : []
+  }
+
   const [ data ] = useState(menuItems);
-  const [ consumo, setConsumo ] = useState<FoodItem[]>([]);
+  const [ consumo, setConsumo ] = useState<FoodItem[]>(initializeConsumo);
   const [ propina, setPropina ] = useState(1.1)
 
   const MAX_TIMES = 15
+
+  useEffect(() => {
+    localStorage.setItem('consumo', JSON.stringify([...consumo]))
+  }, [consumo])
+
 
   function createToast(food: Food) {
     const consumoElem: HTMLElement | null = document.querySelector('#consumoElem');
@@ -16,8 +27,7 @@ export default function usePropinas() {
 
     toastText.textContent = `Se añadió ${food.name} al consumo.`
     toastText.classList.add('text-sm', 'font-normal', 'p-4')
-    toastElem.classList.add('text-center', 'bg-white', 'shadow', 'items-center', 'text-gray-500', 'rounded-lg' )
-    
+    toastElem.classList.add('text-center', 'bg-white', 'shadow', 'items-center', 'text-gray-500', 'rounded-lg')
     
     toastElem.appendChild(toastText)
     consumoElem?.appendChild(toastElem)
@@ -30,21 +40,19 @@ export default function usePropinas() {
 
   function addConsumo(food: Food) {
     const id = food.id;
-  
-    createToast(food)
 
-    if(consumo.find((item: Food) => item.id === id) === undefined) {
-      const newFoodItem: FoodItem = {...food, quantity: 1}
-      setConsumo([...consumo, newFoodItem]);
-    } else {
+    if(consumo.find((item: Food) => item.id === id) === undefined)
+      setConsumo([...consumo, {...food, quantity: 1}]);
+    else {
       const consumoCopy: FoodItem[]= [...consumo];
       const thisQuantity: FoodItem | undefined = consumoCopy.find((item) => item.id === id);
-      
+
       if(thisQuantity !== undefined && thisQuantity.quantity < MAX_TIMES) {
         thisQuantity.quantity++;
         setConsumo([...consumoCopy]);
       }
     }
+    createToast(food)
   }
 
   function substractConsumo(id: number) {
@@ -54,6 +62,7 @@ export default function usePropinas() {
     if(thisTimes !== undefined && thisTimes.quantity > 1){
       thisTimes.quantity -= 1
       setConsumo([...consumoCopy])
+      localStorage.setItem('consumo', JSON.stringify([...consumoCopy]))
     }
   }
 
