@@ -93,3 +93,18 @@ export const TIPS: tipsI[] = [
     title: "Vacía 😵"
   }
 ]
+
+export const emptyConsumo = [
+  {source :"https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg"},
+  {source :"https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"},
+{source: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" },
+{source: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" },
+{source: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" },
+{source: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" },
+{source: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" },
+{source: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" },
+{source: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" },
+{source: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" },
+{source: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" },
+{source: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" },
+]
