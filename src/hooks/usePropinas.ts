@@ -38,15 +38,16 @@ export default function usePropinas() {
     }, 5000);
   }
 
-  function addConsumo(food: Food) {
+  function addConsumo(food: Food | FoodItem) {
     const id = food.id;
 
-    if(consumo.find((item: Food) => item.id === id) === undefined)
+    if(consumo.find((item: Food) => item.id === id) === undefined){
       setConsumo([...consumo, {...food, quantity: 1}]);
+    }
     else {
       const consumoCopy: FoodItem[]= [...consumo];
       const thisQuantity: FoodItem | undefined = consumoCopy.find((item) => item.id === id);
-
+      
       if(thisQuantity !== undefined && thisQuantity.quantity < MAX_TIMES) {
         thisQuantity.quantity++;
         setConsumo([...consumoCopy]);
@@ -55,7 +56,7 @@ export default function usePropinas() {
     createToast(food)
   }
 
-  function substractConsumo(id: number) {
+  function substractConsumo(id: Food["id"]) {
     const consumoCopy: FoodItem[] = [...consumo]
     const thisTimes = consumoCopy.find((item) => Number(item.id) === id)
 

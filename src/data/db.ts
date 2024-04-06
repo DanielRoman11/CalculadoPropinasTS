@@ -62,3 +62,34 @@ export const menuItems: Food[] = [
     "price": 40
   }
 ]
+
+export const TIPS = [
+  {
+    id: 1,
+    percentage: 1.1,
+    description: "Se cobrará un 10% extra del valor total.",
+    name: "minima",
+    title: "Mínima 🙂"
+  },
+  {
+    id: 2,
+    percentage: 1.15,
+    description: "Se cobrará un 15% extra del valor total.",
+    name: "mediana",
+    title: "Mediana 😏"
+  },
+  {
+    id: 3,
+    percentage: 1.2,
+    description: "Se cobrará un 20% extra del valor total.",
+    name: "grande",
+    title: "Generosa 🤑"
+  },
+  {
+    id: 4,
+    percentage: 1.0,
+    description: "Se cobrará el valor total sin añadidos.",
+    name: "vacia",
+    title: "Vacía 😵"
+  },
+]
