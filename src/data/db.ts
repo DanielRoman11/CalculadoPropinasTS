@@ -1,4 +1,4 @@
-import { Food } from "../interfaces";
+import { Food, tipsI } from "../interfaces";
 
 export const menuItems: Food[] = [
   {
@@ -63,7 +63,7 @@ export const menuItems: Food[] = [
   }
 ]
 
-export const TIPS = [
+export const TIPS: tipsI[] = [
   {
     id: 1,
     percentage: 1.1,
@@ -91,5 +91,5 @@ export const TIPS = [
     description: "Se cobrará el valor total sin añadidos.",
     name: "vacia",
     title: "Vacía 😵"
-  },
+  }
 ]

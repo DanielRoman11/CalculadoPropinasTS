@@ -6,11 +6,19 @@ export interface Food {
   price: price
 }
 
+export interface tipsI {
+  id: number
+  percentage: number
+  description: string
+  name: string
+  title: string
+}
+
 export interface FoodItem extends Food {
   quantity: number
 }
 
-interface CalculadoraPropinasProps{
+export interface CalculadoraPropinasProps{
   consumo: FoodItem[]
   substractConsumo: (id: FoodItem["id"]) => void
   addConsumo: (food: Food | FoodItem) => void
